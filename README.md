@@ -108,7 +108,7 @@ v
 \end{bmatrix}
 
 ```
-This equation is of the form $Ax=b$ where A is a rotation matrix. Rotation matrix is orthogonal, so it can be inverted exactly by taking its transpose. We also know that $Ax=b \Rightarrow\ A^\top Ax=A^\top b \Rightarrow\ x=A^\top b,[\quad \because\ A^\top A=I].$ Hence
+This equation is of the form $Ax=b$ where A is a rotation matrix. Rotation matrix is orthogonal, so it can be inverted exactly by taking its transpose. We also know that $\quad Ax=b \quad \Rightarrow\ A^\top Ax=A^\top b \quad \Rightarrow\ x=A^\top b \quad [\because\ A^\top A=I].$ Hence
 ```math
 \begin{bmatrix}
 u \\
@@ -133,10 +133,10 @@ $$
 v = −(x − X)\sin\theta + (y − 42)\cos\theta
 $$
 
-Since $u = t$ exactly, every $t_i$ is known the moment we pick a trial $(\theta, M, X)$ — it doesn't need to be solved for separately. All that remains is to check how well the *other* recovered coordinate, $v_i$, matches what the model predicts at that $t_i$. Minimizing the squared distance between the two over all points pins down $X$, $M$, $\theta$ — an ordinary **3-parameter nonlinear least squares fit**:
+Since $u = t$ exactly, every $t_i$ is known the moment we pick a trial $(\theta, M, X)$ — it doesn't need to be solved for separately. All that remains is to check how well the *other* recovered coordinate, $v_i$, matches what the model predicts at that $t_i$. Minimizing the squared distance between the two over all points pins down the values of $X$, $M$, $\theta$ — an ordinary **3-parameter nonlinear least squares fit**:
 
 $$
-\min_{\theta\, M\, X} \ \sum_i \left[ v_i - e^{M|t_i|}\sin(0.3\,t_i) \right]^2
+\min_{\theta\, M\, X} \ \sum_i \left[ v_i - e^{M|t_i|}\sin(0.3t_i) \right]^2
 $$
 
 where $t_i = u = (x_i - X)\cos\theta + (y_i - 42)\sin\theta$ is recomputed directly from the given data at every step of the fit.
@@ -166,7 +166,7 @@ the valid range rather than getting stuck at the edges.
 
 - 50 independent fits run from random starting points spanning the full parameter bounds.
 - 38/50 runs converged to the same solution, with cost $\approx 9.1 \times 10^{-9}$.
-- The best distinct alternative solution found had cost $\approx 6.8 \times 10^{3}$ — roughly
+- The second best distinct alternative solution found had cost $\approx 6.8 \times 10^{3}$ — roughly
   12 orders of magnitude worse, confirming the winning solution is the unique
   global minimum, not one of several comparably good fits.
 
