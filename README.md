@@ -25,7 +25,7 @@ $$
 
 where `t` is parameter.
 
-## 1. Solution Approach
+## Solution Approach
 
 **Given:**
 
@@ -129,7 +129,7 @@ $$
 
 where $t_i = u = (x_i - X)\cos\theta + (y_i - 42)\sin\theta$ is recomputed directly from the given data at every step of the fit.
 
-## 2. Method
+## Method
 
 1. **Residual function** — for a trial $(θ, M, X)$, compute $t_i$ and $v_i$ for every
    data point, then compare $v_i$ against the model's prediction
@@ -148,7 +148,7 @@ the valid range rather than getting stuck at the edges.
    $t \epsilon [6, 60]$ range as an independent physical validity check (unrelated to the fit
    cost itself).
 
-## 3. Results
+## Results
 
 ### Verifying Global Convergence
 
@@ -165,7 +165,7 @@ the valid range rather than getting stuck at the edges.
 - Matches the known range approximately — independent confirmation the fit is
   physically valid.
 
-## 6. Desmos
+## Desmos
 
 The fitted curve was plotted in Desmos:
 
