@@ -166,7 +166,7 @@ the valid range rather than getting stuck at the edges.
 
 - 50 independent fits run from random starting points spanning the full parameter bounds.
 - 38/50 runs converged to the same solution, with cost $\approx 9.1 \times 10^{-9}$.
-- The best distinct alternative solution found had cost $\approx 9.1 \times 10^{-9}$ — roughly
+- The best distinct alternative solution found had cost $\approx 6.8 \times 10^{3}$ — roughly
   12 orders of magnitude worse, confirming the winning solution is the unique
   global minimum, not one of several comparably good fits.
 
