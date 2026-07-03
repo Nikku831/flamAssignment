@@ -5,7 +5,7 @@ $$
 \hline
 \textbf{Parameter} & \textbf{Fitted Value} \\
 \hline
-\theta & 29.99997293215849^\circ \; \\
+\theta & 29.99997293215849^\circ \\
 M &  0.029999996873053714 \\
 X & 54.99999821279995 \\
 \hline
@@ -39,29 +39,63 @@ where `t` is parameter.
 **Unknowns to solve for:** `θ`, `M`, `X`
 
 Rearranging the equations:
+
 $$
-x − X = t\cos\theta − e^{(M|t|)}\sin(0.3t)\sin\theta
-$$
-$$
-y − 42 = t\sin\theta + e^{(M|t|)}\sin(0.3t)\cos\theta
+x - X = t\cos\theta - e^{M|t|}\sin(0.3t)\sin\theta
 $$
 
-Letting $u = t$ and $v = e^{M|t|} \sin(0.3t)$, this is exactly a 2D rotation:
 $$
-x − X = u\cos\theta − v\sin\theta
-$$
-$$
-y − 42 = u\sin\theta + v\cos\theta
+y - 42 = t\sin\theta + e^{M|t|}\sin(0.3t)\cos\theta
 $$
 
-Writing in matrix form
+Letting
+
 $$
-\begin{bmatrix} x - X \\ y - 42 \end{bmatrix}
+u = t,\qquad
+v = e^{M|t|}\sin(0.3t),
+$$
+
+this is exactly a 2D rotation:
+
+$$
+x - X = u\cos\theta - v\sin\theta
+$$
+
+$$
+y - 42 = u\sin\theta + v\cos\theta.
+$$
+
+Writing in matrix form:
+
+```math
+
+\begin{bmatrix}
+
+x - X \
+
+y - 42
+
+\end{bmatrix}
+
 =
-\begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix}
-\begin{bmatrix} u \\ v \end{bmatrix}
-$$
 
+\begin{bmatrix}
+
+\cos\theta & -\sin\theta \
+
+\sin\theta & \cos\theta
+
+\end{bmatrix}
+
+\begin{bmatrix}
+
+u \
+
+v
+
+\end{bmatrix}
+
+```
 **A rotation matrix is orthogonal**, so it can be inverted exactly by taking its transpose.
 This means for *any* trial values of `θ` and `X`, we can recover `u` and `v` directly:
 
