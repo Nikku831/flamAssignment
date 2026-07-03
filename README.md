@@ -12,7 +12,7 @@ X & 54.99999821279995 \\
 \end{array}
 $$
 
-## Parametric Curve Fitting — θ, M, X Recovery
+# The Problem
 
 This problem was to find three unknown variables — **θ (theta)**, **M**, and **X** — from the following parametric system:
 
@@ -96,7 +96,22 @@ v
 \end{bmatrix}
 
 ```
-**A rotation matrix is orthogonal**, so it can be inverted exactly by taking its transpose.
+This equation is of the form $Ax=b$ where A is a rotation matrix. Rotation matrix is orthogonal, so it can be inverted exactly by taking its transpose. We also know that $Ax=b \Rightarrow\ A^\top Ax=A^\top b \Rightarrow\ x=A^\top b,[\quad \because\ A^\top A=I].$ Hence
+```math
+\begin{bmatrix}
+u \\
+v
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos\theta & \sin\theta \\
+-\sin\theta & \cos\theta
+\end{bmatrix}
+\begin{bmatrix}
+x - X \\
+y - 42
+\end{bmatrix}
+```
 This means for *any* trial values of `θ` and `X`, we can recover `u` and `v` directly:
 
 $$
@@ -109,14 +124,14 @@ $$
 Since $u = t$ exactly, every $t_i$ is known the moment we pick a trial $(\theta, M, X)$ — it doesn't need to be solved for separately. All that remains is to check how well the *other* recovered coordinate, $v_i$, matches what the model predicts at that $t_i$. Minimizing the squared distance between the two over all points pins down $X$, $M$, $\theta$ — an ordinary **3-parameter nonlinear least squares fit**:
 
 $$
-\min_{\theta,\, M,\, X} \; \sum_i \left[ v_i - e^{M|t_i|}\sin(0.3\,t_i) \right]^2
+\min_{\theta\, M\, X} \ \sum_i \left[ v_i - e^{M|t_i|}\sin(0.3\,t_i) \right]^2
 $$
 
-where $t_i = u = (x_i - X)\cos\theta + (y_i - 42)\sin\theta$ is recomputed directly from the data at every step of the fit.
+where $t_i = u = (x_i - X)\cos\theta + (y_i - 42)\sin\theta$ is recomputed directly from the given data at every step of the fit.
 
 ## 2. Method
 
-1. **Residual function** — for a trial $(θ, M, X)$, compute $t_i and v_i$ for every
+1. **Residual function** — for a trial $(θ, M, X)$, compute $t_i$ and $v_i$ for every
    data point, then compare $v_i$ against the model's prediction
    $e^{(M|t_i|)}\sin(0.3t_i)$.
 2. **Bounded nonlinear least squares** — `scipy.optimize.least_squares` using the
@@ -147,10 +162,10 @@ the valid range rather than getting stuck at the edges.
 
 - Known $t$ range: $[6, 60]$
 - Recovered $t$ range from the fitted parameters: $\approx [6.04, 59.995]$
-- Matches the known range almost exactly — independent confirmation the fit is
+- Matches the known range approximately — independent confirmation the fit is
   physically valid.
 
-## 6. Desmos Verification
+## 6. Desmos
 
 The fitted curve was plotted in Desmos:
 
