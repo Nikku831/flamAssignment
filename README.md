@@ -12,6 +12,18 @@ X & 54.99999821279995 \\
 \end{array}
 $$
 
+Hence the equations end up being,
+```math
+\begin{aligned}
+x &= t\cos(29.99997293215849)
+- e^{0.029999996873053714|t|}\sin(0.3t)\sin(29.99997293215849)
++ 54.99999821279995, \\
+y &= 42
++ t\sin(29.99997293215849)
++ e^{0.029999996873053714|t|}\sin(0.3t)\cos(29.99997293215849).
+\end{aligned}
+```
+
 # The Problem
 
 This problem was to find three unknown variables — **θ (theta)**, **M**, and **X** — from the following parametric system:
